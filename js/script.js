@@ -92,31 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
         appearOnScroll.observe(slider);
     });
 
-    // Formspree AJAX Form Submission
-    const inquiryForm = document.getElementById('inquiry-form');
-    if (inquiryForm) {
-        inquiryForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const data = new FormData(e.target);
-            try {
-                const response = await fetch(e.target.action, {
-                    method: inquiryForm.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                if (response.ok) {
-                    alert('Thank you for your inquiry! We will get back to you shortly.');
-                    inquiryForm.reset();
-                } else {
-                    alert('Oops! There was a problem submitting your form. Please try again.');
-                }
-            } catch (error) {
-                alert('Oops! There was a problem submitting your form. Please check your connection and try again.');
-            }
-        });
-    }
 });
 
 const chatBtn = document.getElementById("chatbot-btn");
