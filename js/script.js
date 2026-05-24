@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        
+
         // Toggle icon between bars and times (close)
         const icon = navToggle.querySelector('i');
         if (navMenu.classList.contains('active')) {
@@ -47,13 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Active Link Highlighting
         let scrollY = window.pageYOffset;
-        
+
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
             const sectionTop = current.offsetTop - 100; // Offset for header
             const sectionId = current.getAttribute('id');
             const navLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
-            
+
             if (navLink) {
                 if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
                     navLink.style.color = 'var(--secondary-color)';
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: "0px 0px -100px 0px"
     };
 
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
                 return;
