@@ -158,10 +158,10 @@ async function callAPI(userMessage) {
 
     const data = await response.json();
 
-    addMessage(data.answer || "No response", "bot");
+    addMessage(data.answer || "Sorry for inconvenience, server is currently down, kindly contact to connect@smiragroup.in", "bot");
 
   } catch (error) {
-    addMessage("Error connecting to server", "bot");
+    addMessage("Sorry for inconvenience, server is currently down, kindly contact to connect@smiragroup.in", "bot");
     console.error(error);
   }
 }
