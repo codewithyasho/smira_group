@@ -92,14 +92,29 @@ document.addEventListener('DOMContentLoaded', () => {
         appearOnScroll.observe(slider);
     });
 
-    // Simple Form Submission Handler (Prevent default for UI)
+    // Formspree AJAX Form Submission
     const inquiryForm = document.getElementById('inquiry-form');
     if (inquiryForm) {
-        inquiryForm.addEventListener('submit', (e) => {
+        inquiryForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // In a real application, you would handle the form submission via AJAX/Fetch here
-            alert('Thank you for your inquiry! We will get back to you shortly.');
-            inquiryForm.reset();
+            const data = new FormData(e.target);
+            try {
+                const response = await fetch(e.target.action, {
+                    method: inquiryForm.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    alert('Thank you for your inquiry! We will get back to you shortly.');
+                    inquiryForm.reset();
+                } else {
+                    alert('Oops! There was a problem submitting your form. Please try again.');
+                }
+            } catch (error) {
+                alert('Oops! There was a problem submitting your form. Please check your connection and try again.');
+            }
         });
     }
 });
